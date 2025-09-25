@@ -34,7 +34,7 @@ jobs:
 
       - name: Build MySQL image
         run: |
-          docker build -t clo835-mysql -f Dockerfile.mysql .
+          docker build -t clo835-mysql -f Dockerfile_mysql .
           docker tag clo835-mysql:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/clo835-mysql:latest
 
       - name: Push images to ECR
