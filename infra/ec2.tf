@@ -12,7 +12,7 @@ locals {
 resource "aws_instance" "app" {
   ami                         = data.aws_ami.al2.id
   instance_type               = var.instance_type
-  key_name      = aws_key_pair.mynewkey.key_name
+  key_name      = aws_key_pair.lastkey.key_name
   subnet_id                   = tolist(data.aws_subnets.default_public.ids)[0]
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.web_sg.id]
@@ -34,7 +34,7 @@ data "aws_ami" "al2" {
 }
 
 
-resource "aws_key_pair" "mynewkey" {
-  key_name   = "mynewkey"
-  public_key = file("/home/ec2-user/environment/mynewkey.pem.pub")
+resource "aws_key_pair" "lastkey" {
+  key_name   = "lastkey"
+  public_key = file("/home/ec2-user/environment/lastkey.pem.pub")
 }
